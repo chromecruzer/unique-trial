@@ -133,3 +133,17 @@ interface UploadRecord {
 
   console.table(userRes)
   console.table(BookRes)
+
+
+  // reduce accum 
+  const numbers1 = [1, 2, 3, 4, 5];
+
+const sum = numbers1.reduce((accumulator, currentValue, currentIndex, array) => {
+  // Your logic here
+  return accumulator + currentValue + currentIndex ;
+}, 1);
+
+console.log(sum); // Output: 15 (1 + 2 + 3 + 4 + 5)
+
+
+

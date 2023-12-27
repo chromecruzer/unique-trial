@@ -213,7 +213,88 @@ const students = [
   const str = 'Hello,World,How,Are,You';
   console.log(_.split(str,''))
   console.log(_.join(str,('| 0 |')))    // join 
+
+
+// lodash reduce trac prototype
+
+
+
+const mapping = [
+  { sqlLabel: 'label1', nullify: (val) => val.toUpperCase() },
+  { sqlLabel: 'label2', default: 'defaultVal' },
+  // ... other mapping elements
+];
+
+const row = ['value1', null, 'value3'];
+
+const result = _.reduce(mapping, (accum, { sqlLabel, nullify, default: defaultValue }, i) => {
+  const value = row[i] !== undefined ? row[i] : null;
+  accum[sqlLabel] = _.isFunction(nullify) ? nullify(value) : value || defaultValue;
+  return accum;
+}, {});
+
+console.log(result);
+
+
+
+
+
+
+// Simplified versions of the functions with descriptive variable names
+
+// matchFieldFn prototype with descriptive names
+const matchFieldFn = (fieldsOrField, record) => {
+  if (_.isArray(fieldsOrField)) {
+    return _.join(_.map(fieldsOrField, fieldName => record[fieldName]), '|');
+  } else {
+    return record[fieldsOrField];
+  }
+};
+
+// deepEqualFn prototype with descriptive names
+const deepEqualFn = (candidateObj, masterObj, fieldsToCompare = null) => {
+  if (_.isArray(fieldsToCompare)) {
+    return _.reduce(fieldsToCompare, (isDeepEqual, fieldName) => {
+      if (!isDeepEqual) {
+        return isDeepEqual;
+      }
+      return _.isEqual(candidateObj[fieldName], masterObj[fieldName]);
+    }, true);
+  }
+  return _.isEqual(masterObj, candidateObj);
+};
+
+// Example usage
+const candidateObject = {
+  id: 1,
+  name: 'John',
+  age: 30,
+  city: 'New York',
+  area: 'aluma'
+};
+
+const fieldsToMatch = ['name', 'age', 'city', 'area'];
+const resultMatch = matchFieldFn(fieldsToMatch, candidateObject);
+console.log('matchFieldFn result:', resultMatch);
+
+const masterObject = {
+  id: 1,
+  name: 'John',
+  age: 30,
+  city: 'New York',
+  isMale: true         // added by me for testing 
+};
+
+const fieldsToCheckEquality = ['name', 'age', 'city'];
+const resultEquality = deepEqualFn(candidateObject, masterObject, fieldsToCheckEquality);
+console.log('deepEqualFn result:', resultEquality);
+
+
+   
+
+
+
+
+
+
 // lodash collection method 
-
-
-
