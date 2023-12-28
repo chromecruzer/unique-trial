@@ -6,16 +6,16 @@ const PORT = 4000;
 const app = exp()
 
 
-// lodash tutorial
+//lodash tutorial
 //  let srr = [2,4,5,6]
 // let arr = [2,1,24,14,10,true, false]   
-// console.log(_.chunk(arr,2)[2]) // chunk 
-// console.log(_.fill(arr,3,4,54,)) // fill
-// console.log(_.compact(arr))  // compact
+// console.log(_.chunk(arr,2)[2],`chunk`) // chunk  // that [2] for displaying the particular index 
+// console.log(_.fill(arr,3,4,6,),`fill`) // fill  // val | startIndx | uptoIndx
+// console.log(_.compact(arr),`compact`)  // compact
 // let newArr = (_.concat(arr, srr))  // concat 
-// console.log(newArr)
+// console.log(newArr,`concat`)
 
-
+ 
 
 
 // // Original array
@@ -24,7 +24,7 @@ const app = exp()
 // // Using lodash.findIndex
 // let index = _.findIndex(array2, (e) => {
 // 	return e == 1;
-// }, 5);
+// }, 5);  // this is the starting index that tells the search to start 
 
 // // Print original Array
 // console.log("original Array: ", array2)
@@ -38,41 +38,44 @@ const app = exp()
 // let ar = [1,2,3,4,'a']
 // let ar2 = ['a','b','e',3]
 // let diffar = _.differenceBy(ar,ar2)
-// console.log(diffar)
+// console.log(diffar,`difference`)
 
 // // first 
-//  console.log(_.first([1,2,3,7]))
+//  console.log(_.first([1,2,3,7]),`first`)
+//  // last 
+//  console.log(_.last(ar2), `last`)
 
 
 //  // flatten
 //  let ar3 = [[1,3],[23],[233]]
-//   console.log(_.flatten(ar3))
+//   console.log(_.flatten(ar3),`flatten`)
 
 // // flattendeep
 // let arr4 = [2,[2,[2,[4]]]]
-// console.log(_.flattenDeep(arr4))
-// console.log(_.flattenDepth(arr4,2)) // look deep based on the level u provide man 
+// console.log(_.flattenDeep(arr4),`flattenDeep`)
+// console.log(_.flattenDepth(arr4,2),`flattenDeepth`) // look deep based on the level u provide man 
 
 // // drop 
 
 // let arr5 = [2,34,34,4,4,4,4,4,4,4,4,4]
-// console.log(_.drop(arr5,1))
+// console.log(_.drop(arr5,1),`drop`)
 
 // // drop right 
-// console.log(_.dropRight(arr5,9))
+// console.log(_.dropRight(arr5,9),`dropRight`)
 
 // // frompairs 
 
 // let arr7 = [['d',1],['r',3],[9,'d']]
-// console.log(_.fromPairs(arr7))
+// console.log(_.fromPairs(arr7),`FromPairs`)
 
 // let pairs = [
 //     ['name', 'lodash'],
 //     ['live', 'npm'],
-//     ['used', 'nodejs']
+//     ['used', 'nodejs'],
+//     ['asan','magesh', ],['arul', 'mani']
 // ]
 // let obj = _.fromPairs(pairs);
-// console.log(obj)
+// console.log(obj,`pairs-2 eg.`)
 // // Original array 
 // let array1 = [ 
 //     { "a": 1, "b": 2 }, 
@@ -89,7 +92,7 @@ const app = exp()
 // console.log("original Array: ", array1) 
 
 // // Printing the newArray 
-// console.log("new Array: ", newArray) 
+// console.log("new Array: ", newArray,`dropRightWhile`) 
 
 
 
@@ -97,28 +100,33 @@ const app = exp()
 
 // let arr9 = [1,3,4,56,6,6,6,6,3,3,3,3,3,3,3]
 // const val = _.dropWhile(arr9,(e)=>{return e!=56})
-// console.log(val)
+// console.log(val,`dropWhile`)
 
-// initial which removes the last element of the array 
+
+//-----------------------------------------------------------------------------------strike here 
+
+
+
+//initial which removes the last element of the array 
 let arr = [2, 43, 5, 5, 53, 35, 3, 535, 3]
-console.log(_.initial(arr))
+console.log(_.initial(arr),`initial`) 
 
 // intersection method
 let arr2 = [2, 4, , 5345, 435, 345, 34, 5, 3345,]
-console.log(_.intersection(arr, arr2))
+console.log(_.intersection(arr, arr2),`intersection`)
 
 //////////////////////////////trac used lodash/////////////////////////////
 
 // join
 let arr4 = [3, 4, 7, 4, 3]
-let joinarr = _.join(arr.concat('<>'), ` mari `)
-console.log(joinarr)
+let joinarr = _.join(arr4.concat('<this is added at last lol>%%%%'), ` mari `)
+console.log(joinarr,`join`)
 
 
 // map
 
 let arr9 = [1, 1, 12, 2, 8]
-console.log(_.map(arr9, (e) => e * 2)) // if u use curly braces use the return key word then only it will work ok {}
+console.log(_.map(arr9, (e) => e * e+2),`map-lodash`) // if u use curly braces use the return key word then only it will work ok {}
 
 // filter
 
@@ -131,11 +139,11 @@ let arrObj = [{
     name: 'vaani',
     age: '24',
     isMale: true
-}
+},
 ]
 
 console.table(_.filter(arrObj,(e)=>e.isMale===false))
-console.log(_.sortBy(arrObj,'name'),'name')
+console.log(_.sortBy(arrObj,'name'),'name',`sortBy-lodash`)
 
 
 // reduce 
@@ -174,28 +182,29 @@ const myObject = {
   const dump = (obj, depth = null) => util.inspect(obj, {depth, colors: true});
 
   console.log('Object using dump:');
-  console.log(dump(myObject));
+  console.log(dump(myObject),`using advanced util.inspect as we have seen in TRAC`);
     
 
 // slice 
 let arrsl = [1,2,3,5,4,5,1,5,1,2,3,2,1,2,1,2,1,3,5,1,6,1,1,1,2,1,31,32]
-console.log(_.slice(arrsl,0,8))
+console.log(_.slice(arrsl,0,8),`slice`) // 0 start 8 end 
 
 // grop by 
 
 const students = [
     { name: 'Alice', grade: 'A' },
     { name: 'Bob', grade: 'B' },
+    { name: 'Swetha',   },         // blaaaack sheep 
     { name: 'Charlie', grade: 'A' },
     { name: 'David', grade: 'C' },
     { name: 'Emma', grade: 'B' }
   ];
 
-  console.log(_.groupBy(students,'grade'))
+  console.log(_.groupBy(students,'grade'),`gropBy`)
 
   // uniq
   let uqarr = [1,1,1,1,1,1,1,1,121,2,2,2,2,1,2]
-  console.log(_.uniq(uqarr))
+  console.log(_.uniq(uqarr),`unique`)
 
   // keys
   const user = {
@@ -204,15 +213,16 @@ const students = [
     email: 'alice@example.com'
   };
 
-  console.log(_.values(user))
+  console.log(_.values(user))   // learn with difference man
+  console.table(_.keys(user))
 
 
 
   // split
 
   const str = 'Hello,World,How,Are,You';
-  console.log(_.split(str,''))
-  console.log(_.join(str,('| 0 |')))    // join 
+  console.log(_.split(str,''),`splite`)
+  console.log(_.join(str,('| 0 |')))    // join , comma separater as seen in TRAC
 
 
 // lodash reduce trac prototype
